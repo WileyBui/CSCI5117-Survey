@@ -1,15 +1,20 @@
-# "Dummy" project for quickly playing around with Flask.
+# CSCI 5117 Spring 2021 -- Module 1 Homework
 
-See [the flask quickstart guide](http://flask.pocoo.org/docs/1.0/quickstart/)
+Instructions can be [found on canvas](https://canvas.umn.edu/courses/217951/pages/homework-1)
 
-To run: `FLASK_APP=server.py FLASK_ENV=development flask run` (one big command)
+Please fill out all of the following sections to help us grade your submission:
 
-* hello world: 
-	*`Flask(__name__)` sets up a flask server
-	* `@app.route("/")` uses python's declerator syntax to register this function to a url route.
-	* logging: `app.logger.info(...)`
-	* static content: add image to static folder.
-	* from template: `render_template("foo.html")`
-	* extracting info from request: `request.args["foo"]` (or `args.get(..., default)` if it's optional...
-	* add conditional rendering to template: `{% if property %} ... {% endif %}`
-	* templated additions `{{ variable }}`
+## Student (to be completed individually)
+
+* First Last, x500@umn.edu
+
+## Link to Site
+
+<https://TODO.herokuapp.com/>
+
+## Challenge Task
+
+* I started the challenge task: [yes/no]
+* I completed the challenge task: [yes/no]
+
+(if applicable) link: <https://TODO.herokuapp.com/admin/summary>

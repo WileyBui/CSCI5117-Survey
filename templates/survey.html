@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Survey</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css" integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd" crossorigin="anonymous">
+
+    <!-- pure grid responsive (below) -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/grids-responsive-min.css" />
+
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="/static/survey.css">
+    <script src="static/main.js"></script>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="icon" type="image/jpg" href="/static/images/favicon.jpg"/>
+  </head>
+
+  <body>
+    <form class="pure-form pure-form-stacked" method="POST">
+        <legend>Survey</legend>
+        <div class="pure-g">
+          <div class="pure-u-1 pure-u-md-1-2">
+            <label for="form-major">Major</label>
+            <input type="text" id="form-major" class="pure-u-23-24" minlength="3" required placeholder="Computer Science" />
+          </div>
+          <div class="pure-u-1 pure-u-md-1-2">
+            <label for="year">Year</label>
+            <select id="stacked-state" style="width: 96%">
+              <option selected disabled></option>
+              <option>PSEO</option>
+              <option>Freshman</option>
+              <option>Sophomore</option>
+              <option>Junior</option>
+              <option>Senior</option>
+              <option>Master/Grad student</option>
+              <option>N/A</option>
+            </select>
+          </div>
+          <div class="pure-u-1 pure-u-md-1-2 require-padding-top-5">
+            <label for="form-5117-reason">I am taking CSCI 5117 because this class... (Choose best one)</label>
+            <label for="radio-option-req" class="pure-radio">
+              <input type="radio" id="radio-option-req" name="optionsRadios" value="required" /> is required for my major.</label>
+            <label for="radio-option-credits" class="pure-radio">
+              <input type="radio" id="radio-option-credits" name="optionsRadios" value="credits" /> fulfills any of my upper-division credits.</label>
+            <label for="radio-option-fun" class="pure-radio">
+              <input type="radio" id="radio-option-fun" name="optionsRadios" value="fun" /> seems fun.</label>
+            <label for="radio-option-professor" class="pure-radio">
+              <input type="radio" id="radio-option-professor" name="optionsRadios" value="professor" /> has great professor ratings on RateMyProfessors.com</label>
+            <label for="radio-option-na" class="pure-radio">
+              <input type="radio" id="radio-option-na" name="optionsRadios" value="na" /> N/A</label>
+          </div>
+          <div class="pure-u-1 pure-u-md-1-2 require-padding-top-5">
+            <label for="form-suggestions" class="pure-checkbox pure-u-md-1-2">
+              <input type="checkbox" id="form-has-a-suggestion" /> I have a suggestion for this survey</label>
+              <textarea class="pure-input-1-2" id="form-textarea-suggestion" placeholder="Comment your suggestion here" style="width: 96%"></textarea>
+          </div>
+        </div>
+
+        <a href="thanks"><button type="submit" class="pure-button pure-button-primary">Next</button></a>
+    </form>
+
+  </body>
+  <script src="static/survey.js"></script>
+</html>

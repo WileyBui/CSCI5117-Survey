@@ -1,8 +1,3 @@
-body {
-    background-image: linear-gradient(to right, #66a6ff, #90f2f9);
-    padding: 1% 10%;
-}
-
 .button-success,
 .button-error,
 .button-warning,
@@ -32,6 +27,9 @@ body {
     /* this is a light blue */
 }
 
-.require-padding-top-5 {
-    padding-top: 5%;
-}
+/*
+<button class="button-success pure-button">Success Button</button>
+<button class="button-error pure-button">Error Button</button>
+<button class="button-warning pure-button">Warning Button</button>
+<button class="button-secondary pure-button">Secondary Button</button>
+*/
