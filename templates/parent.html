@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}{% endblock %} | Wiley's Survey</title>
+  <link rel="stylesheet" href="static/header.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css"
+    integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd" crossorigin="anonymous">
+
+  {% block css_and_js_href %}
+  {% endblock %}
+</head>
+
+<body>
+  <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+    <a href="{{ url_for("survey_root") }}" class="pure-menu-heading">Survey</a>
+    
+    <ul class="pure-menu-list">
+      <li class="pure-menu-item link"><a href="{{ url_for("survey_root") }}" class="pure-menu-link">Home</a></li>
+      <li class="pure-menu-item link"><a href="{{ url_for("survey_admin_summary") }}" class="pure-menu-link">Results</a></li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 10vh;"></div>
+
+  {% block contents %}
+  {% endblock %}
+</body>
+
+{% block bottom_js_scripts %}
+{% endblock %}
+</html>

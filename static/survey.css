@@ -1,3 +1,7 @@
 #form-textarea-suggestion {
     visibility: hidden;
 }
+
+.min_width_btn {
+    width: 48% !important;
+}

@@ -1,0 +1,118 @@
+{% extends "parent.html" %}
+{% block css_and_js_href %}
+  <link rel="stylesheet" href="../static/header.css">
+  <link rel="stylesheet" href="../static/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="anonymous" />
+  <style>
+    body { background: white !important }
+  </style>
+{% endblock %}
+
+{% block title %}Summary{% endblock %}
+
+{% block contents %}
+<div style="width: 40vh">
+  <canvas id="majorChart" width="200" height="200"></canvas>
+</div>
+
+<br />
+<br />
+<br />
+
+
+
+<table class="pure-table pure-table-bordered">
+  <colgroup>
+    <col />
+    <col />
+    <col style="background-color: rgba(0,0,255,.25)" />
+    <col />
+    <col />
+  </colgroup>
+  <thead>
+      <tr>
+          <th style="width: 5%;">Survey ID</th>
+          <th style="width: 25%;">Timestamp</th>
+          <th style="width: 15%;">Major</th>
+          <th style="width: 20%;">Year</th>
+          <th style="width: 30%;">Why Take CSCI5117?</th>
+          <th style="width: 40%;">Suggestions</th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for n in data %}
+      <tr style="font-size: 14px">
+        {% if n[0] == None %} <td></td> {% else %} <td> {{ n[0] }}</td>{% endif %}
+        {% if n[1] == None %} <td></td> {% else %} <td> {{ n[1] }}</td>{% endif %}
+        {% if n[2] == None %} <td></td> {% else %} <td> {{ n[2] }}</td>{% endif %}
+        {% if n[3] == None %} <td></td> {% else %} <td> {{ n[3] }}</td>{% endif %}
+        {% if n[4] == None %} <td></td> {% else %} <td> {{ n[4] }}</td>{% endif %}
+        {% if n[5] == None %} <td></td> {% else %} <td> {{ n[5] }}</td>{% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+<!-- <div>
+  
+  <ul>
+    {% for n in data %}
+    <li>{{ n }}</li>
+    {% endfor %}
+  </ul>
+</div> -->
+{% endblock %}
+
+
+{% block bottom_js_scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  var ctx = document.getElementById("majorChart").getContext("2d");
+  var studentYearList = {{currentStudentYearList|safe}};
+  console.log(studentYearList)
+
+  var counts = {'PSEO': 0, 'Freshman': 0, 'Sophomore': 0, 'Junior': 0, 'Senior': 0, 'Master/Grad student': 0, 'N/A': 0};
+
+  for (var i = 0; i < studentYearList.length; i++) {
+    var elem = studentYearList[i];
+    counts[elem] += 1;
+  }
+
+  var majorChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ['PSEO', 'Freshman', 'Sophomore', 'Junior', 'Senior', 'Master/Grad', 'N/A'],
+          datasets: [{
+              label: '# of Frequencies',
+              data: Object.values(counts),
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 2,
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
+  </script>
+{% endblock %}

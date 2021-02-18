@@ -1,16 +1,11 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>Survey: Declined</title>
+{% extends "parent.html" %}
+{% block css_and_js_href %}
   <link rel="stylesheet" href="/static/main.css">
-  <script src="static/main.js"></script>
-</head>
+{% endblock %}
 
-<body>
-  <p>Thank you for completing this survey.</p>
+{% block title %}Completed{% endblock %}
 
-</body>
-</html>
+{% block contents %}
+  <p>Thank you for completing this survey. We really appreciate your response!</p>
+  <small>You may see the results on the <b>Results</b> tab above.</small>
+{% endblock %}

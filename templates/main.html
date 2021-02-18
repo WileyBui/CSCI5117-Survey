@@ -1,49 +1,20 @@
-<!doctype html>
+{% extends "parent.html" %}
+{% block css_and_js_href %}
+<link rel="stylesheet" href="static/main.css">
+{% endblock %}
 
-<html lang="en">
+{% block title %}Welcome{% endblock %}
 
-<head>
-  <meta charset="utf-8">
+{% block contents %}
+<h1>Hello!</h1>
+<p>Would you like to give consent to participate in our anonymous survey about this course?</p>
+<small>Your response and others' responses will display after you have completed the survey.</small>
+<br />
+<br />
+<br />
 
-  <title>Welcome to Our Survey!</title>
-  <link rel="stylesheet" href="static/header.css">
-  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css"
-    integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd" crossorigin="anonymous">
-  <link rel="stylesheet" href="static/main.css">
-  <script src="static/main.js"></script>
-
-  <style>
-    .equal_width {
-      min-width: 30% !important;
-    }
-  </style>
-</head>
-
-<body>
-  {% include "header.html" %}
-
-  <h1>Hello!</h1>
-  <p>Would you like to give consent and participate in our anonymous survey about this course?</p>
-  <small>Your response and others' responses will display after you have completed the survey.</small>
-  <br />
-  <br />
-  <br />
-
-  <b>
-    <a href="{{ url_for('survey_consent') }}"><button class="button-success pure-button equal_width">Consent</button></a>
-    <a href="{{ url_for('survey_declined') }}"><button class="button-error pure-button equal_width">Decline</button></a>
-  </b>
-  <!-- <a class="pure-button pure-button-primary" href="survey"><button id="tester">consent</button></a>
-    <a class="pure-button pure-button-primary" href="decline"><button id="tester">decline</button></a>
-    <a class="button-success pure-button" href="decline"><button id="tester">decline</button></a> -->
-
-  <!-- Pipenv shell
-FLASK_APP=server.py FLASK_ENV=development flask run
-
-
-Reuse header: http://jonathansoma.com/tutorials/webapps/layouts/ 
-Flask helper: https://www.tutorialspoint.com/flask  -->
-
-</body>
-
-</html>
+<b>
+  <a href="{{ url_for('survey_consent') }}"><button class="button-success pure-button equal_width">Consent</button></a>
+  <a href="{{ url_for('survey_declined') }}"><button class="button-error pure-button equal_width">Decline</button></a>
+</b>
+{% endblock %}

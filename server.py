@@ -27,7 +27,7 @@ def survey_form_post():
         
         cur.execute("INSERT INTO survey (student_major, student_year, student_reason, student_suggestion) values (%s, %s, %s, %s)", (major, year, reason, suggestion))
         
-        return redirect(url_for('survey_results'))
+        return redirect(url_for('survey_admin_summary'))
     
 
 @app.route('/decline')
@@ -38,14 +38,14 @@ def survey_declined():
 def survey_thanks():
     return render_template("thanks.html")
 
-@app.route('/record', methods=['GET'])
-def survey_results():
-    with db.get_db_cursor() as cur:
+@app.route('/admin/summary', methods=['GET'])
+def survey_admin_summary():
+    with db.get_db_cursor(False) as cur:
         cur.execute("SELECT * FROM survey;")
+        cur = [record for record in cur];
+        currentYearList = [record[3] for record in cur if record[3] != None];
         
-        names = cur#[record[0] for record in cur]
-
-        return render_template("results.html", names=names)
+        return render_template("admin_summary.html", data=cur, currentStudentYearList=currentYearList)
     
 
 def datetime_handler(x):
