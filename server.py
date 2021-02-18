@@ -27,7 +27,7 @@ def survey_form_post():
         
         cur.execute("INSERT INTO survey (student_major, student_year, student_reason, student_suggestion) values (%s, %s, %s, %s)", (major, year, reason, suggestion))
         
-        return redirect(url_for('survey_admin_summary'))
+        return redirect(url_for('survey_thanks'))
     
 
 @app.route('/decline')
@@ -41,11 +41,14 @@ def survey_thanks():
 @app.route('/admin/summary', methods=['GET'])
 def survey_admin_summary():
     with db.get_db_cursor(False) as cur:
-        cur.execute("SELECT * FROM survey;")
+        cur.execute("SELECT * FROM survey ORDER BY time_stamp;")
         cur = [record for record in cur];
+        timestampList = [record[1].strftime("%Y-%m-%d") for record in cur];
+        majorList = [record[2].upper() for record in cur];
         currentYearList = [record[3] for record in cur if record[3] != None];
         
-        return render_template("admin_summary.html", data=cur, currentStudentYearList=currentYearList)
+        return render_template("admin_summary.html", data=cur, timestampList=timestampList, 
+                               majorList=majorList, currentStudentYearList=currentYearList)
     
 
 def datetime_handler(x):
@@ -63,9 +66,9 @@ def survey_api_results():
 
     with db.get_db_cursor() as cur:
         if not reverse:
-            cur.execute("SELECT * FROM survey;")
+            cur.execute("SELECT * FROM survey ORDER BY time_stamp ASC;")
         else:
-            cur.execute("SELECT * FROM survey ORDER BY survey_id DESC;")
+            cur.execute("SELECT * FROM survey ORDER BY time_stamp DESC;")
             
         row_headers = [x[0] for x in cur.description]
         rv          = cur.fetchall()
