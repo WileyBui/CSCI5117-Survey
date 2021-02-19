@@ -7,5 +7,5 @@
 
 {% block contents %}
   <p>Thank you for completing this survey. We really appreciate your response!</p>
-  <small>You may see the results on the <b>Results</b> tab above.</small>
+  <small>You may see the results <a href="{{ url_for('survey_admin_summary') }}">Results</a> here.</small>
 {% endblock %}

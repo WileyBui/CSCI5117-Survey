@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css"
   integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g=="
   crossorigin="anonymous" />
+<!-- JQuery for checkbox triggering-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <style>
   body {
-    background: #eeecec !important
+    background: #eeecec !important;
   }
 </style>
 {% endblock %}
@@ -15,17 +18,34 @@
 {% block title %}Summary{% endblock %}
 
 {% block contents %}
-<div style="width: 40vh">
-  <canvas id="currentStudentYearChart" width="50%" height="50%" style="display: inline;"></canvas>
-  <canvas id="timeChart" width="50%" height="50%" style="display: inline"></canvas>
-  <canvas id="majorPieChart" width="50%" height="50%" style="display: inline"></canvas>
+<div style="width: 50vw">
+  <h1>Bar Graph: Current Classmen in CSCI 5117</h1>
+  <canvas id="currentStudentYearChart"></canvas>
+  <br /><br /><br /><br />
+  
+  <h1>Time Graph: Number of Filled-Out Survey / Day</h1>
+  <canvas id="timeChart"></canvas>
+  <br /><br /><br /><br />
+  
+  <h1>Pie Graph: Different Majors Who are Taking CSCI 5117</h1>
+  <canvas id="majorPieChart"></canvas>
+  <br /><br /><br /><br />
+  
+  <h1>Pie Graph: Why Take CSCI 5117?</h1>
+  <canvas id="whyTake5117Chart"></canvas>
+  <br /><br /><br /><br />
+  
+  <h1>Bar Graph: Suggestions for this Survey</h1>
+  <canvas id="suggestionChart"></canvas>
 </div>
 
 <br />
 <br />
 <br />
 
-<table class="pure-table pure-table-bordered">
+<h3><input type="checkbox" id="display-database" /> Click here to display the entire database</label></h3>
+<br />
+<table class="pure-table pure-table-bordered" id="survey-database">
   <colgroup>
     <col />
     <col />
@@ -35,12 +55,12 @@
   </colgroup>
   <thead>
     <tr>
-      <th style="width: 5%;">Survey ID</th>
-      <th style="width: 25%;">Timestamp</th>
-      <th style="width: 15%;">Major</th>
-      <th style="width: 20%;">Year</th>
-      <th style="width: 30%;">Why Take CSCI5117?</th>
-      <th style="width: 40%;">Suggestions</th>
+      <th>Survey ID</th>
+      <th>Timestamp</th>
+      <th>Major</th>
+      <th>Year</th>
+      <th>Why Take CSCI5117?</th>
+      <th>Suggestions</th>
     </tr>
   </thead>
   <tbody>
@@ -60,6 +80,8 @@
 
 
 {% block bottom_js_scripts %}
+<script>document.getElementById("survey-database").style.display = "none";</script>
+<script src="/static/summary.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
   integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw=="
   crossorigin="anonymous"></script>
@@ -69,10 +91,14 @@
 <script type="text/javascript" src="/static/admin_summary_currentStudentYear.js"></script>
 <script type="text/javascript" src="/static/admin_summary_time.js"></script>
 <script type="text/javascript" src="/static/admin_summary_major.js"></script>
+<script type="text/javascript" src="/static/admin_summary_why5117.js"></script>
+<script type="text/javascript" src="/static/admin_summary_suggestion.js"></script>
 <script type="text/javascript">
   display_current_year({{ currentStudentYearList | safe}});
   display_time({{ timestampList | safe}});
   display_major({{ majorList | safe}});
+  display_reason({{ reasonList | safe}});
+  display_suggestion({{ suggestionList | safe}});
 </script>
 
 {% endblock %}

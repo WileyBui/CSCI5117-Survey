@@ -42,13 +42,16 @@ def survey_thanks():
 def survey_admin_summary():
     with db.get_db_cursor(False) as cur:
         cur.execute("SELECT * FROM survey ORDER BY time_stamp;")
-        cur = [record for record in cur];
-        timestampList = [record[1].strftime("%Y-%m-%d") for record in cur];
-        majorList = [record[2].upper() for record in cur];
+        cur             = [record for record in cur];
+        timestampList   = [record[1].strftime("%Y-%m-%d") for record in cur];
+        majorList       = [record[2].upper() for record in cur];
         currentYearList = [record[3] for record in cur if record[3] != None];
+        reasonList      = [record[4] for record in cur if record[4] != None];
+        suggestionList  = [record[5] for record in cur if record[5] != None];
         
         return render_template("admin_summary.html", data=cur, timestampList=timestampList, 
-                               majorList=majorList, currentStudentYearList=currentYearList)
+                               majorList=majorList, currentStudentYearList=currentYearList, 
+                               reasonList=reasonList, suggestionList=suggestionList)
     
 
 def datetime_handler(x):
