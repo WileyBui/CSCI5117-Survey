@@ -29,6 +29,7 @@ Assuming you've installed Python, pip, and pipenv. To set up:
 1. heroku ps:scale web=1
 1. heroku addons:create heroku-postgresql:hobby-dev
 1. heroku pg:psql
+
 After finishing the commands above, one must copy the DATABASE_URL from Heroku's settings to the .env file.
 
 To run:
