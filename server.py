@@ -82,5 +82,4 @@ def survey_api_results():
 
         json_output = json.dumps(json_data, default=datetime_handler)
         
-        # json sort_keys
         return json_output
