@@ -1,7 +1,3 @@
-# CSCI 5117 Spring 2021 -- Module 1 Homework
-Instructions can be [found on canvas](https://canvas.umn.edu/courses/217951/pages/homework-1)
-
-
 ## Student Information
 * Wiley Bui, buixx206@umn.edu
 
@@ -20,3 +16,4 @@ Instructions can be [found on canvas](https://canvas.umn.edu/courses/217951/page
 * `/thanks` - Once the user is finished with their survey, they are redirected to this page as a way to thank them.
 * `/api/results` - Returns the JSON contents of all the survey responses that we have collected to date (sorted by the oldest to the newest date).
 * `/api/results?reverse=true` - Similarly, this page returns the JSON contents of all the survey responses that we have collected to date, but it's sorted by the newest to the oldest date.
+* `/admin/summary` - Shows the bar and pie graphs of the overall results from the survey. The graphs show what year the current student is in, the number of surveys filled out each day, the majors who are taking CSCI 5117, and the reason why they are taking CSCI 5117. The graphs are from the [Chart.js](https://www.chartjs.org) library. Furthermore, the user may click the checkbox on the bottom of the page if they may choose to display the entire database.
