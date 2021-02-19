@@ -22,7 +22,7 @@
         ![JSON API Results page](site_images/api_results.png?raw=true "JSON API Results page")
 * `/api/results?reverse=true` - Similarly, this page returns the JSON contents of all the survey responses that we have collected to date, but it's sorted by the newest to the oldest date.
         ![JSON API Results (Reversed) page](site_images/api_results_reverse.png?raw=true "JSON API Results (Reversed) page")
-* `/admin/summary` - Shows the bar and pie graphs of the overall results from the survey. The graphs show what year the current student is in, the number of surveys filled out each day, the majors who are taking CSCI 5117, and the reason why they are taking CSCI 5117. The graphs are from the [Chart.js](https://www.chartjs.org) library. Furthermore, the user may click the checkbox on the bottom of the page if they may choose to display the entire database.
+* `/admin/summary` - Shows the bar and pie graphs of the overall results from the surveys. The graphs show what year the current students are in, the number of surveys filled out each day, the majors who are taking CSCI 5117, and the reasons why they are taking CSCI 5117. The graphs are from the [Chart.js](https://www.chartjs.org) library. Furthermore, the user may click the checkbox on the bottom of the page if they may choose to display the entire database.
         ![Admin summary page](site_images/summary.png?raw=true "Admin summary page")
 
 ## Documentations
