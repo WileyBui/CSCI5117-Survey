@@ -67,6 +67,10 @@ def survey_api_results():
     # https://stackoverflow.com/a/43796849/14651198
     reverse = request.args.get("reverse", False)
 
+    # makes sure to check if reverse parameter is actually "true"
+    if (reverse != False):
+        reverse = True if (reverse.lower() == "true") else False
+            
     with db.get_db_cursor() as cur:
         if not reverse:
             cur.execute("SELECT * FROM survey ORDER BY time_stamp ASC;")
